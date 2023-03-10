@@ -19,5 +19,12 @@ public class CustomListTest {
         customList.addCity(city);
         assertEquals(1,customList.getCount());
     }
+    @Test
+    public void getCountTest(){
+        CustomList customList = new CustomList(null,cityDataList);
+        City city = new City("Edmonton","AB");
+        customList.addCity(city);
+        assertEquals(1,customList.getCount());
+    }
 
 }
