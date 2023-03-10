@@ -5,36 +5,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 //import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 public class CustomListTest {
-    private ArrayList<City> list;
-    public ArrayList<City> MockCityList(){
-        ArrayList<City> cities = new ArrayList<>();
-        return  cities;
+    private CustomList mockCityList(){
+        CustomList customList = new CustomList(null, new ArrayList<City>());
+        customList.addCity(mockCity());
+        return customList;
+    }
+    private City mockCity(){
+        City city = new City("Toronto", "Ontario");
+        return city;
     }
     @Test
-    public void testAddCity(){
-        list = MockCityList();
-        City city = new City("Edmonton","AB");
-        list.add(city);
-        assertEquals(1,list.size());
+    public void testGetCount(){
+        CustomList customList = mockCityList();
+        assertEquals(1, customList.getCount());
     }
-    @Test
-    public void testHasCity(){
-        list = MockCityList();
-        City city = new City("Edmonton","AB");
-        list.add(city);
-        assertEquals(true,list.contains(city));
-    }
-    @Test
-    public void testDeleteCity(){
-        list = MockCityList();
-        City city = new City("Edmonton","AB");
-        list.add(city);
-        list.remove(city);
-        assertEquals(0,list.size());
-    }
+
 }
